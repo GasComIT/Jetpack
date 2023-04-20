@@ -8,30 +8,20 @@ Not running Selenium or Chromimum saves you
 like **half a gig** of ram..!
 Jetpack supports Interaction with multi-device & web versions of WhatsApp.
 
-[![Generic badge](https://img.shields.io/badge/💠Plugins-red.svg)](https://github.com/GasComIT/Jetpack/tree/main/plugins) 
+[![Generic badge](https://img.shields.io/badge/💠Plugins-red.svg)](https://github.com/GasComIT/Jetpack/tree/main/lib/Utils) 
 [![Generic badge](https://img.shields.io/badge/🚀Jetpack-blue.svg)](https://github.com/gascomit/Jetpack)
 [![Generic badge](https://img.shields.io/badge/☸️WEBSITE-white.svg)](https://jetpack.gascomit.repl.co/)
-[![Generic badge](https://img.shields.io/badge/⛱️GROUPS-darkgreen.svg)](https://qtell.gascomit.repl.co/)
+[![Generic badge](https://img.shields.io/badge/🪀GROUPS-darkgreen.svg)](https://chat.whatsapp.com/D9gPfFXQq2lGL77meDgd8h)
 
-### ☊--🧩 Current Version: 5.0 🧩---☊
-<li><a href="Deco.html">Jetpack</a> v5.0</li>
+### ☊--🧩 Current Version: 1.0.1 🧩---☊
+<li><a href="Deco.html">Jetpack</a> v1.0</li>
 
 
-☊Jetpack is type-safe, extensible and simple to use. If you require more functionality than provided, it'll super easy for you to write an extension. More on this [here](#WritingCustomFunctionality).
+☊Jetpack is type-safe, extensible and simple to use. If you require more functionality than provided, it's super easy for you to write an extension. More on this [here](#WritingCustomFunctionality).
  
- If you're interested in building a WhatsApp bot, you may wanna check out [Vlkyre Bot](https://github.com/gascomit/Vlkyre) and an actual bot built with it, [Qtell Bot](https://github.com/gascomit/qtell).
+ If you're interested in building a WhatsApp bot, you may wanna check out [Shimmer Bot](https://github.com/gascomit/Shimmer) and an actual bot built with it, [Secktor Bot](https://github.com/gascomit/secktor-md).
  
 
-### ☊ Example
-
-Do check out & run [example.ts](https://github.com/gascomit/blob/master/Example/example.ts) to see example usage of the library.
-The script covers most common use cases.
-To run the example script, download or clone the repo and then type the following in terminal:
-1. ``` cd path/to/Jetpack ```
-2. ``` yarn ```
-3. 
-    - ``` yarn example ``` for the multi-device edition
-    - ``` yarn example:legacy ``` for the legacy web edition
 
 ### ☊  Install
 
@@ -48,14 +38,10 @@ yarn add github:gascomit/jetpack
 Then import in your code using:
 ``` ts 
 // for multi-device
+
 import makeWASocket from '@gascomit/jetpack'
-// for legacy web
-import {makeWALegacySocket} from '@gascomit/jetpack'
+
 ```
-
-### ☊  Unit Tests
-
-TODO
 
 ### ☊  Connecting
 
@@ -96,17 +82,6 @@ If the connection is successful, you will see a QR code printed on your terminal
 
 **Note:** install `qrcode-terminal` using `yarn add qrcode-terminal` to auto-print the QR to the terminal.
 
-### ☊  Notable Differences Between Jetpack v4 & v5
-
-1. Jetpack has been written from the ground up to have a more "functional" structure. This is done primarily for simplicity & more testability
-2. The Jetpack event emitter will emit all events and be used to generate a source of truth for the connected user's account. Access the event emitter using (`sock.ev`)
-3. Jetpack no longer maintains an internal state of chats/contacts/messages. You should ideally take this on your own, simply because your state in MD is its own source of truth & there is no one-size-fits-all way to handle the storage for this. However, a simple storage extension has been provided. This also serves as a good demonstration of how to use the Baileys event emitter to construct a source of truth.
-4. A Jetpack "socket" is meant to be a temporary & disposable object -- this is done to maintain simplicity & prevent bugs. I felt the entire Baileys object became too bloated as it supported too many configurations. You're encouraged to write your own implementation to handle missing functionality.
-5. Moreover, Jetpack does not offer an inbuilt reconnect mechanism anymore (though it's super easy to set one up on your own with your own rules, check the example script)
-
-### ☊ Configuring the Connection
-
-You can configure the connection by passing a `SocketConfig` object.
 
 The entire `SocketConfig` structure is mentioned here with default values:
 ``` ts
@@ -285,26 +260,7 @@ The store also provides some simple functions such as `loadMessages` that utiliz
 
 **Note:** I highly recommend building your own data store especially for MD connections, as storing someone's entire chat history in memory is a terrible waste of RAM.
 
-### ☊ Using the Legacy Version
 
-The API for the legacy and MD versions has been made as similar as possible so ya'll can switch between them seamlessly.
-
-Example on using the eg. version:
-``` ts
-import P from "pino"
-import { Boom } from "@hapi/boom"
-import { makeWALegacySocket } from '@gascomit/jetpack'
-
-// store can be used with legacy version as well
-const store = makeInMemoryStore({ logger: P().child({ level: 'debug', stream: 'store' }) })
-
-const sock = makeWALegacySocket({
-    logger: P({ level: 'debug' }),
-    printQRInTerminal: true,
-    auth: state
-})
-// bind to the socket
-store.bind(sock.ev)
 ```
 
 If you need a type representing either the legacy or MD version:
@@ -333,15 +289,15 @@ const sentMsg  = await sock.sendMessage(
 // send a contact!
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FN:Jeff Singh\n' // full name
-            + 'ORG:Ashoka Uni;\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=911234567890:+91 12345 67890\n' // WhatsApp ID + phone number
+            + 'FN:Rabia Mkk\n' // full name
+            + 'ORG:GasComIT;\n' // the organization of the contact
+            + 'TEL;type=CELL;type=VOICE;waid=254123456789:+254 12345 6789\n' // WhatsApp ID + phone number
             + 'END:VCARD'
 const sentMsg  = await sock.sendMessage(
     id,
     { 
         contacts: { 
-            displayName: 'Jeff', 
+            displayName: 'Rabia', 
             contacts: [{ vcard }] 
         }
     }
@@ -522,7 +478,7 @@ This does mean you have to keep track of unread messages.
 ``` ts 
 const id = '1234-123@g.us'
 const messageID = 'AHASHH123123AHGA' // id of the message you want to read
-const participant = '912121232@s.whatsapp.net' // the ID of the user that sent the message (undefined for individual chats)
+const participant = '2547912121232@s.whatsapp.net' // the ID of the user that sent the message (undefined for individual chats)
 
 await sock.sendReadReceipt(id, participant, [messageID])
 ```
@@ -789,4 +745,4 @@ This will enable you to see all sorts of messages WhatsApp sends in the console.
 
  This library was originally a project for **CS-2362 at Ashoka University** and is in no way affiliated with WhatsApp. Use at your own discretion. Do not spam people with this.
 
- Also, this repo is now licenced under GPL 3 since it uses [libsignal-node](https://git.questbook.io/backend/service-coderunner/-/merge_requests/1)
+Tis repo licenced under MIT
