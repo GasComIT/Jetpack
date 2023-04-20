@@ -15,10 +15,8 @@ Jetpack supports Interaction with multi-device & web versions of WhatsApp.
 [![Generic badge](https://img.shields.io/badge/🚀Jetpack-blue.svg)](https://github.com/gascomit/Jetpack)
 [![Generic badge](https://img.shields.io/badge/☸️WEBSITE-white.svg)](https://jetpack.gascomit.repl.co/)
 [![Generic badge](https://img.shields.io/badge/🪀GROUPS-darkgreen.svg)](https://chat.whatsapp.com/D9gPfFXQq2lGL77meDgd8h)
+[![Generic badge](https://img.shields.io/github/repo-size/GasComIT/Jetpack?color=green&label=Repo%20Size&style=for-the-badge&logo=appveyor)](https://github.com/GasComIT/Jetpack)
 
-<p align="center ">
-<img width=" "src=" https://img.shields.io/github/repo-size/GasComIT/Jetpack?color=green&label=Repo%20Size&style=for-the-badge&logo=appveyor">
-</p>
 
 
 ### ☊--🧩 Current Version: 1.0.1 🧩---☊
