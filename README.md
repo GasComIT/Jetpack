@@ -169,7 +169,7 @@ The events are typed up in a type map, as mentioned here:
 
 ``` ts
 
-export type JetpackEventMap = {
+export type BaileysEventMap = {
     /** connection state has been updated -- WS closed, opened, connecting etc. */
 	'connection.update': Partial<ConnectionState>
     /** auth credentials updated -- some pre key state, device ID etc. */
@@ -261,13 +261,6 @@ The store also provides some simple functions such as `loadMessages` that utiliz
 **Note:** I highly recommend building your own data store especially for MD connections, as storing someone's entire chat history in memory is a terrible waste of RAM.
 
 
-```
-
-If you need a type representing either the legacy or MD version:
-``` ts
-// this type can have any of the socket types underneath
-import { AnyWASocket } from '@gascomit/jetpack'
-```
 
 ### ☊ Sending Messages
 
